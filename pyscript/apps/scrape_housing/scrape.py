@@ -49,10 +49,9 @@ def scrape(content, item, address_selector, rent_selector, size_selector=None, r
         text = get_or_default(element, details_selector) or element_text
         plz = re.search(r'\b1\d{4}\b', address)
 
-        apartment = apartment_create(address=address, rent=rent, size=size, rooms=rooms, text=text)
-        if apartment_filter(apartment):
+        if not ([apartment["rent"], apartment["size"], apartment["rooms"]].count(None) == 3 or apartment["address"] is None):
           del apartment['text']
-          apartments.append(apartment)
+          apartments.append(apartment_create(address=address, rent=rent, size=size, rooms=rooms, text=text))
 
     return apartments
 

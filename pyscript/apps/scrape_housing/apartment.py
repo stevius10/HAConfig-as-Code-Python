@@ -35,8 +35,6 @@ def apartment_string(a):
 
 @debugged
 def apartment_filter(a):
-    if not has_required_fields(a):
-        return False
     if not is_rent_in_range(a):
         return False
     if not is_size_in_range(a):
@@ -50,9 +48,6 @@ def apartment_filter(a):
     if is_blacklisted(a):
         return False
     return True
-
-def has_required_fields(a):
-    return not ([a["rent"], a["size"], a["rooms"]].count(None) == 3 or a["address"] is None)
 
 def is_rent_in_range(a):
     if a["rent"] and re.findall(r"\d", a["rent"]):

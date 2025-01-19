@@ -84,7 +84,7 @@ DATA_SCRAPE_HOUSING_PROVIDERS = {
 
 
   "ibw": { # approved 280624
-      "url": "https://inberlinwohnen.de/wp-content/themes/ibw/skript/wohnungsfinder.php",
+      "url": "https://inberlinwohnen.de/wp-content/themes/ibw/skript/wohnungsfinder.php", "ref": "https://inberlinwohnen.de/wohnungsfinder/", 
       "structure": {"item": "span._tb_left", "address_selector": None, "rent_selector": None, "size_selector": None, "rooms_selector": None, "details_selector": None, "url_selector": "a" },
       "request_headers": { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Accept': '*/*', 'X-Requested-With': 'XMLHttpRequest' }, "request_data": { 'q': 'wf-save-srch', 'save': 'false', 'qm_min': SET_SCRAPE_HOUSING_FILTER_AREA, 'miete_max': SET_SCRAPE_HOUSING_FILTER_RENT, 'rooms_min': SET_SCRAPE_HOUSING_FILTER_ROOMS, 'bez[]': ['01_00', '02_00', '03_00', '04_00', '02_00'], 'wbs': 0 } },
 

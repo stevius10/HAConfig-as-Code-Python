@@ -12,7 +12,7 @@ def notify_housing(target=CFG_NOTIFICATION_TARGET_DEFAULT, default=True, var_nam
   if value and value not in MAP_STATE_HA_UNDEFINED:
     diff = compare(old_value, value)
     if diff:
-      url = DATA_SCRAPE_HOUSING_PROVIDERS.get(var_name.split(f"{MAP_PERSISTENCE_PREFIX_SCRAPE_HOUSING}_")[1]).get("url")
+      url = DATA_SCRAPE_HOUSING_PROVIDERS.get(var_name.split(f"{MAP_PERSISTENCE_PREFIX_SCRAPE_HOUSING}_")[1], {}).get("ref") or DATA_SCRAPE_HOUSING_PROVIDERS.get(var_name.split(f"{MAP_PERSISTENCE_PREFIX_SCRAPE_HOUSING}_")[1], {}).get("url")
       pyscript.shortcut(message=f"{var_name}: {value}", shortcut=MAP_SERVICE_SCRAPE_HOUSING_SHORTCUT_NAME, input=url)
 
 # Functional
