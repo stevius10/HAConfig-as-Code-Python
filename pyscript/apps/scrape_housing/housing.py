@@ -8,19 +8,16 @@ def scrape_housing(provider):
     filtered = []
     ignored = []
     structure = DATA_SCRAPE_HOUSING_PROVIDERS[provider]["structure"]
-    try:
-        content = fetch(provider)
-        apartments = scrape(content, structure["item"], structure["address_selector"], 
-                          structure["rent_selector"], structure["size_selector"], 
-                          structure["rooms_selector"], structure["details_selector"])
 
-        for apartment in apartments:
-            if apartment_filter(apartment):
-                del apartment['text']
-                filtered.append(apartment)
-            else:
-                ignored.append(apartment)
-                
-        return filtered, ignored
-    except Exception as e:
-        return [type(Exception)], [str(e)]
+    content = fetch(provider)
+    apartments = scrape(content, structure["item"], structure["address_selector"], 
+                      structure["rent_selector"], structure["size_selector"], 
+                      structure["rooms_selector"], structure["details_selector"])
+
+    for apartment in apartments:
+        if apartment_filter(apartment):
+            filtered.append(apartment)
+        else:
+            ignored.append(apartment)
+            
+    return filtered, ignored
